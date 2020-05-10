@@ -17,6 +17,7 @@
 		FAA0C26424634BE4007A3500 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0C26324634BE4007A3500 /* MainViewController.swift */; };
 		FAA0C26A24634BE4007A3500 /* MAS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAA0C26824634BE4007A3500 /* MAS.xcdatamodeld */; };
 		FAA0C26C24634BE4007A3500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA0C26B24634BE4007A3500 /* Assets.xcassets */; };
+		FAF81E7D2467F97400D8B872 /* CarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF81E7C2467F97400D8B872 /* CarBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FAA0C26924634BE4007A3500 /* MAS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MAS.xcdatamodel; sourceTree = "<group>"; };
 		FAA0C26B24634BE4007A3500 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAA0C27024634BE4007A3500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAF81E7C2467F97400D8B872 /* CarBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				FAA07359246707B50062433B /* Engine.swift */,
 				FA5BE550246358BA00EDB56A /* User.swift */,
 				FAA0735B24671F0A0062433B /* Rent.swift */,
+				FAF81E7C2467F97400D8B872 /* CarBase.swift */,
 			);
 			path = "Business model";
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				FAA0C26A24634BE4007A3500 /* MAS.xcdatamodeld in Sources */,
 				FA5BE551246358BA00EDB56A /* User.swift in Sources */,
 				FA5BE54F2463588A00EDB56A /* Car.swift in Sources */,
+				FAF81E7D2467F97400D8B872 /* CarBase.swift in Sources */,
 				FAA0C26024634BE4007A3500 /* AppDelegate.swift in Sources */,
 				FAA0C26224634BE4007A3500 /* SceneDelegate.swift in Sources */,
 				FAA0735C24671F0A0062433B /* Rent.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User {
+class User: Equatable {
     var id: Int
     var firstName: String
     var secondName: String
@@ -33,5 +33,11 @@ class User {
     
     static func getUsers() -> [User] {
         return User.extent
+    }
+}
+
+extension User {
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.id == rhs.id
     }
 }

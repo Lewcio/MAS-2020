@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Car {
+class Car: Equatable {
     private var brand: String
     private var model: String
     private var registrationPlate: String
     private var engine: Engine
-    private var rentedBy: User? // atrybut op.
+    private var rentedBy: User? // atrybut op
     
     private static var extent: [Car] = [Car]()
     
@@ -52,5 +52,11 @@ class Car {
     
     func finishRent() {
         rentedBy = nil
+    }
+}
+
+extension Car {
+    static func == (lhs: Car, rhs: Car) -> Bool {
+        return lhs.registrationPlate == rhs.registrationPlate
     }
 }
