@@ -7,5 +7,7 @@ target 'MAS' do
 
   # Pods for MAS
   pod 'SnapKit', '~> 4.0'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
 
 end
