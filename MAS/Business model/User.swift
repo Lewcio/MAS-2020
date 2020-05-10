@@ -16,7 +16,7 @@ class User: Equatable {
     var address: String
     var phoneNumber: Int
     
-    private static var userIds: Int = 0
+    private static var userIds: Int = 0 // atr.
     
     private static var extent: [User] = [User]()
     

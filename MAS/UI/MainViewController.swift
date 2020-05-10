@@ -58,7 +58,7 @@ class MainViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    car.rent(by: logged)
+                    Rent.rent(user: logged, car: car)
                     let alert = UIAlertController(title: "You have rented a car", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Thank you", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
@@ -71,7 +71,7 @@ class MainViewController: UIViewController {
         button2.rx.tap.bind {_ in
             if let car = Car.getCar(registrationPlate: "WE 10000") {
                 if car.isRented() {
-                    car.finishRent()
+                    Rent.endRent(user: logged, car: car)
                     let alert = UIAlertController(title: "You have ended your rent", message: "Thank you!", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Rent {
+class Rent { // kompozycja
     var user: User
     var car: Car
     var start: Date
@@ -16,7 +16,7 @@ class Rent {
     
     private static var extent: [Rent] = [Rent]()
     
-    init(user: User, car: Car) {
+    private init(user: User, car: Car) {
         self.user = user
         self.car = car
         self.start = Date()
@@ -24,15 +24,28 @@ class Rent {
         startRent()
     }
     
-    func startRent() {
+    private func startRent() {
         car.rent(by: user)
     }
     
-    func endRent() {
-        car.finishRent()
+    static func rent(user: User, car: Car) {
+        if !car.isRented() {
+            let rent = Rent.init(user: user, car: car)
+            Rent.extent.append(rent)
+        }
     }
     
-    // kwalifikowana
+    static func endRent(user: User, car: Car) {
+        if car.isRented() {
+            for rent in Rent.extent {
+                if rent.user == user && rent.end == nil {
+                    rent.end = Date()
+                    car.finishRent()
+                }
+            }
+        }
+    }
+    
     static func rented(by user: User) -> [Rent] {
         var rents = [Rent]()
         for rent in Rent.extent {
