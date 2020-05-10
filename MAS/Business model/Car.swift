@@ -13,7 +13,7 @@ class Car: Equatable {
     private var model: String
     private var registrationPlate: String
     private var engine: Engine
-    private var rentedBy: User? // atrybut op
+    private var rentedBy: User?
     
     private static var extent: [Car] = [Car]()
     
