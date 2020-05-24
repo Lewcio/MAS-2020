@@ -20,6 +20,9 @@ class CarBase {
         self.hasWashes = hasWashes
         self.hasCleaner = hasCleaner
     }
+}
+
+extension CarBase {
     
     func deponeCar(car: Car) {
         if !cars.contains(car) {

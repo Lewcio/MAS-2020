@@ -10,6 +10,7 @@
 		77C9D7E0CECF8276A3505B76 /* Pods_MAS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5914205FC38A0DC4BAC712E5 /* Pods_MAS.framework */; };
 		FA5BE54F2463588A00EDB56A /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BE54E2463588A00EDB56A /* Car.swift */; };
 		FA5BE551246358BA00EDB56A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BE550246358BA00EDB56A /* User.swift */; };
+		FA6B76F52479D72E006D77F2 /* Insurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B76F42479D72E006D77F2 /* Insurance.swift */; };
 		FAA0735A246707B50062433B /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA07359246707B50062433B /* Engine.swift */; };
 		FAA0735C24671F0A0062433B /* Rent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0735B24671F0A0062433B /* Rent.swift */; };
 		FAA0C26024634BE4007A3500 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0C25F24634BE4007A3500 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 		8476DB3AD4E14B017A23DF11 /* Pods-MAS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAS.debug.xcconfig"; path = "Target Support Files/Pods-MAS/Pods-MAS.debug.xcconfig"; sourceTree = "<group>"; };
 		FA5BE54E2463588A00EDB56A /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		FA5BE550246358BA00EDB56A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA6B76F42479D72E006D77F2 /* Insurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insurance.swift; sourceTree = "<group>"; };
 		FAA07359246707B50062433B /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		FAA0735B24671F0A0062433B /* Rent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rent.swift; sourceTree = "<group>"; };
 		FAA0C25C24634BE4007A3500 /* MAS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 				FAA07359246707B50062433B /* Engine.swift */,
 				FA5BE550246358BA00EDB56A /* User.swift */,
 				FAA0735B24671F0A0062433B /* Rent.swift */,
+				FA6B76F42479D72E006D77F2 /* Insurance.swift */,
 				FAF81E7C2467F97400D8B872 /* CarBase.swift */,
 			);
 			path = "Business model";
@@ -256,6 +259,7 @@
 				FAA0C26024634BE4007A3500 /* AppDelegate.swift in Sources */,
 				FAA0C26224634BE4007A3500 /* SceneDelegate.swift in Sources */,
 				FAA0735C24671F0A0062433B /* Rent.swift in Sources */,
+				FA6B76F52479D72E006D77F2 /* Insurance.swift in Sources */,
 				FAA0735A246707B50062433B /* Engine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

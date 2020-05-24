@@ -15,7 +15,7 @@ class Car: Equatable {
     private var engine: Engine
     private var rentedBy: User?
     
-    private static var extent: [Car] = [Car]()
+    private static var extent = [Car]()
     
     init(brand: String, model: String, registrationPlate: String, engine: Engine) {
         self.brand = brand
@@ -23,6 +23,9 @@ class Car: Equatable {
         self.registrationPlate = registrationPlate
         self.engine = engine
     }
+}
+
+extension Car {
     
     static func getCar(registrationPlate: String) -> Car? {
         for car in Car.extent {
@@ -53,9 +56,7 @@ class Car: Equatable {
     func finishRent() {
         rentedBy = nil
     }
-}
-
-extension Car {
+    
     static func == (lhs: Car, rhs: Car) -> Bool {
         return lhs.registrationPlate == rhs.registrationPlate
     }

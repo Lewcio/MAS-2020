@@ -39,61 +39,87 @@ class MainViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        setupView()
+        
         addCars()
         addUsers()
-        
-        let logged = User(id: 3, firstName: "Michal", secondName: "Lewandowski", email: "s13864@pjwstk.edu.pl", address: "Warszawa, Koszykowa 1", phoneNumber: 600100300)
-        User.addUser(logged)
         
         // trwałość ekstensji
         print(User.getUsers())
         
+    }
+    
+    func setupView() {
+        let logged = User(id: 3, firstName: "Michal", secondName: "Lewandowski", email: "s13864@pjwstk.edu.pl", address: "Warszawa, Koszykowa 1", phoneNumber: 600100300)
         
         let button1 = UIButton()
-        button1.setTitle("Rent car1", for: .normal)
-        button1.rx.tap.bind {_ in
+        button1.setTitle("Rent car1 (WE 10000)", for: .normal)
+        button1.backgroundColor = .systemGreen
+        button1.layer.cornerRadius = 12
+        button1.rx.tap.bind { _ in
+            // car that user want to rent
             if let car = Car.getCar(registrationPlate: "WE 10000") {
-                if car.isRented() {
-                    let alert = UIAlertController(title: "Car is currently rented", message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                } else {
+                // check if its possible to rent the car
+                if Rent.canRent(car: car) {
                     Rent.rent(user: logged, car: car)
                     let alert = UIAlertController(title: "You have rented a car", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Thank you", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Car is currently unavileable", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
         }.disposed(by: disposeBag)
         
         let button2 = UIButton()
-        button2.setTitle("Stop renting car1", for: .normal)
-        button2.rx.tap.bind {_ in
+        button2.setTitle("Stop renting", for: .normal)
+        button2.backgroundColor = .systemGreen
+        button2.layer.cornerRadius = 12
+        button2.rx.tap.bind { _ in
+            if let rent = Rent.currentRent(by: logged) {
+                Rent.endRent(user: logged, car: rent.car)
+                let alert = UIAlertController(title: "You have ended your rent", message: "Thank you!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "You have no rented car", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }.disposed(by: disposeBag)
+        
+        let button3 = UIButton()
+        button3.setTitle("Add inurance to car (WE 10000) for 7 seconds", for: .normal)
+        button3.backgroundColor = .systemGreen
+        button3.layer.cornerRadius = 12
+        button3.rx.tap.bind { [unowned self] _ in
             if let car = Car.getCar(registrationPlate: "WE 10000") {
-                if car.isRented() {
-                    Rent.endRent(user: logged, car: car)
-                    let alert = UIAlertController(title: "You have ended your rent", message: "Thank you!", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    let alert = UIAlertController(title: "Car isn't rented", message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
+                self.addInsurance(to: car, expires: Date(timeIntervalSinceNow: 7))
             }
         }.disposed(by: disposeBag)
         
         view.addSubview(button1)
         button1.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
         }
         
         view.addSubview(button2)
         button2.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
             make.top.equalTo(button1.snp.bottom).offset(20)
         }
         
+        view.addSubview(button3)
+        button3.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.top.equalTo(button2.snp.bottom).offset(20)
+        }
     }
     
     func addCars() {
@@ -103,21 +129,23 @@ class MainViewController: UIViewController {
             registrationPlate: "WE 10000",
             engine: Engine.getEngine(power: 140, gearbox: .manual)
         )
-        Car.addCar(car1)
         let car2 = Car(
             brand: "BMW",
             model: "1 series",
             registrationPlate: "WE 10001",
             engine: Engine.getEngine(power: 140, gearbox: .automatic)
         )
+        Car.addCar(car1)
         Car.addCar(car2)
     }
     
     func addUsers() {
-        let user1 = User(id: 1, firstName: "Bogdan", secondName: "Niemiecki", email: "b.nie@abc.pl", address: "Warszawa, Pulawska 1", phoneNumber: 600200300)
-        User.addUser(user1)
-        let user2 = User(id: 2, firstName: "Tomasz", secondName: "Aleksander", email: "ta@abc.pl", address: "Warszawa, Grochowska 3", phoneNumber: 600200301)
-        User.addUser(user2)
+        let _ = User(id: 1, firstName: "Bogdan", secondName: "Niemiecki", email: "b.nie@abc.pl", address: "Warszawa, Pulawska 1", phoneNumber: 600200300)
+        let _ = User(id: 2, firstName: "Tomasz", secondName: "Aleksander", email: "ta@abc.pl", address: "Warszawa, Grochowska 3", phoneNumber: 600200301)
+    }
+    
+    func addInsurance(to car: Car, expires: Date) {
+        let _ = Insurance(car: car, expires: expires)
     }
 
 

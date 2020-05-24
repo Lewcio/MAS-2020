@@ -16,9 +16,9 @@ class User: Equatable {
     var address: String
     var phoneNumber: Int
     
-    private static var userIds: Int = 0 // atr.
+    private static var userIds: Int = 0
     
-    private static var extent: [User] = [User]()
+    private static var extent = [User]()
     
     init(id: Int, firstName: String, secondName: String, email: String, address: String, phoneNumber: Int) {
         self.id = id
@@ -27,18 +27,17 @@ class User: Equatable {
         self.email = email
         self.address = address
         self.phoneNumber = phoneNumber
-    }
-    
-    static func addUser(_ user: User) {
-        User.extent.append(user)
-    }
-    
-    static func getUsers() -> [User] {
-        return User.extent
+        
+        User.extent.append(self)
     }
 }
 
 extension User {
+    
+    static func getUsers() -> [User] {
+        return User.extent
+    }
+    
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.id == rhs.id
     }

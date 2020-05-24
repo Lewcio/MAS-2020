@@ -17,7 +17,7 @@ class Engine {
     private var power: Int
     private var gearbox: Gearbox
     
-    private static var extent: [Engine] = [Engine]()
+    private static var extent = [Engine]()
     
     init(power: Int, gearbox: Gearbox) {
         self.power = power
