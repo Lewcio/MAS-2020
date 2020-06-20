@@ -9,17 +9,16 @@
 import Foundation
 
 class Rent {
-    var user: User
+    var user: Person
     var car: Car
-    var start: Date
+    var start = Date()
     var end: Date?
     
     private static var extent = [Rent]()
     
-    private init(user: User, car: Car) {
+    private init(user: Person, car: Car) {
         self.user = user
         self.car = car
-        self.start = Date()
         
         startRent()
     }
@@ -31,21 +30,21 @@ extension Rent {
         car.rent(by: user)
     }
     
-    static func canRent(car: Car) -> Bool {
-        if !car.isRented(), Insurance.hasInsurance(car: car) {
+    static func canRent(user: Person, car: Car) -> Bool {
+        if user.canRent(), !car.isRented(), Insurance.hasInsurance(car: car) {
             return true
         }
         return false
     }
     
-    static func rent(user: User, car: Car) {
-        if canRent(car: car) {
+    static func rent(user: Person, car: Car) {
+        if canRent(user: user, car: car) {
             let rent = Rent.init(user: user, car: car)
             Rent.extent.append(rent)
         }
     }
     
-    static func endRent(user: User, car: Car) {
+    static func endRent(user: Person, car: Car) {
         if car.isRented() {
             for rent in Rent.extent {
                 if rent.user == user && rent.end == nil {
@@ -56,7 +55,7 @@ extension Rent {
         }
     }
     
-    static func rented(by user: User) -> [Rent] {
+    static func rented(by user: Person) -> [Rent] {
         var rents = [Rent]()
         for rent in Rent.extent {
             if rent.user.id == user.id {
@@ -66,7 +65,7 @@ extension Rent {
         return rents
     }
     
-    static func currentRent(by user: User) -> Rent? {
+    static func currentRent(by user: Person) -> Rent? {
         for rent in Rent.extent {
             if rent.user.id == user.id, rent.end == nil {
                 return rent

@@ -13,7 +13,7 @@ class Car: Equatable {
     private var model: String
     private var registrationPlate: String
     private var engine: Engine
-    private var rentedBy: User?
+    private var rentedBy: Person?
     
     private static var extent = [Car]()
     
@@ -47,7 +47,7 @@ extension Car {
         return true
     }
     
-    func rent(by user: User) {
+    func rent(by user: Person) {
         if !isRented() {
             rentedBy = user
         }

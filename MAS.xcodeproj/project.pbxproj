@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		77C9D7E0CECF8276A3505B76 /* Pods_MAS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5914205FC38A0DC4BAC712E5 /* Pods_MAS.framework */; };
+		FA2646D7248C549A00C71478 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2646D6248C549A00C71478 /* Person.swift */; };
+		FA2646D9248C56DF00C71478 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2646D8248C56DF00C71478 /* Employee.swift */; };
+		FA2646DB248C604B00C71478 /* EmployeeUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2646DA248C604B00C71478 /* EmployeeUser.swift */; };
+		FA2646DD248C610500C71478 /* EmployeeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2646DC248C610500C71478 /* EmployeeInterface.swift */; };
 		FA5BE54F2463588A00EDB56A /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BE54E2463588A00EDB56A /* Car.swift */; };
 		FA5BE551246358BA00EDB56A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BE550246358BA00EDB56A /* User.swift */; };
 		FA6B76F52479D72E006D77F2 /* Insurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B76F42479D72E006D77F2 /* Insurance.swift */; };
@@ -25,6 +29,10 @@
 		4DF25397FCB85255F9CAF643 /* Pods-MAS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAS.release.xcconfig"; path = "Target Support Files/Pods-MAS/Pods-MAS.release.xcconfig"; sourceTree = "<group>"; };
 		5914205FC38A0DC4BAC712E5 /* Pods_MAS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8476DB3AD4E14B017A23DF11 /* Pods-MAS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAS.debug.xcconfig"; path = "Target Support Files/Pods-MAS/Pods-MAS.debug.xcconfig"; sourceTree = "<group>"; };
+		FA2646D6248C549A00C71478 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		FA2646D8248C56DF00C71478 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		FA2646DA248C604B00C71478 /* EmployeeUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeUser.swift; sourceTree = "<group>"; };
+		FA2646DC248C610500C71478 /* EmployeeInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeInterface.swift; sourceTree = "<group>"; };
 		FA5BE54E2463588A00EDB56A /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		FA5BE550246358BA00EDB56A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA6B76F42479D72E006D77F2 /* Insurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insurance.swift; sourceTree = "<group>"; };
@@ -118,8 +126,12 @@
 			children = (
 				FA5BE54E2463588A00EDB56A /* Car.swift */,
 				FAA07359246707B50062433B /* Engine.swift */,
-				FA5BE550246358BA00EDB56A /* User.swift */,
 				FAA0735B24671F0A0062433B /* Rent.swift */,
+				FA2646D6248C549A00C71478 /* Person.swift */,
+				FA5BE550246358BA00EDB56A /* User.swift */,
+				FA2646D8248C56DF00C71478 /* Employee.swift */,
+				FA2646DA248C604B00C71478 /* EmployeeUser.swift */,
+				FA2646DC248C610500C71478 /* EmployeeInterface.swift */,
 				FA6B76F42479D72E006D77F2 /* Insurance.swift */,
 				FAF81E7C2467F97400D8B872 /* CarBase.swift */,
 			);
@@ -252,15 +264,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA0C26424634BE4007A3500 /* MainViewController.swift in Sources */,
+				FA2646D9248C56DF00C71478 /* Employee.swift in Sources */,
 				FAA0C26A24634BE4007A3500 /* MAS.xcdatamodeld in Sources */,
 				FA5BE551246358BA00EDB56A /* User.swift in Sources */,
 				FA5BE54F2463588A00EDB56A /* Car.swift in Sources */,
+				FA2646D7248C549A00C71478 /* Person.swift in Sources */,
 				FAF81E7D2467F97400D8B872 /* CarBase.swift in Sources */,
 				FAA0C26024634BE4007A3500 /* AppDelegate.swift in Sources */,
 				FAA0C26224634BE4007A3500 /* SceneDelegate.swift in Sources */,
+				FA2646DD248C610500C71478 /* EmployeeInterface.swift in Sources */,
 				FAA0735C24671F0A0062433B /* Rent.swift in Sources */,
 				FA6B76F52479D72E006D77F2 /* Insurance.swift in Sources */,
 				FAA0735A246707B50062433B /* Engine.swift in Sources */,
+				FA2646DB248C604B00C71478 /* EmployeeUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

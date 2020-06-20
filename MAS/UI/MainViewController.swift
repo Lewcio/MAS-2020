@@ -39,18 +39,36 @@ class MainViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        setupView()
-        
         addCars()
         addUsers()
         
+        setupView()
+        
         // trwałość ekstensji
-        print(User.getUsers())
+        print(Person.getPersons())
+        
+        // make Pan Swiata employee also user
+        for user in User.getPersons() {
+            if user.name == "Pan", user.surname == "Swiata" {
+                user.makeUser()
+                
+                // should be now .employee and .user
+                print(user.type)
+
+                
+                // make user Micha Lewandowski possible to rent a car
+                for verify in User.getPersons() {
+                    if verify.name == "Michal", verify.surname == "Lewandowski" {
+                        user.verifyUser(user: verify)
+                    }
+                }
+            }
+        }
         
     }
     
     func setupView() {
-        let logged = User(id: 3, firstName: "Michal", secondName: "Lewandowski", email: "s13864@pjwstk.edu.pl", address: "Warszawa, Koszykowa 1", phoneNumber: 600100300)
+        let logged = Person(name: "Michal", surname: "Lewandowski", email: "s13864@pjwstk.edu.pl", address: "Warszawa, Koszykowa 1", phoneNumber: 600100300, type: .user)
         
         let button1 = UIButton()
         button1.setTitle("Rent car1 (WE 10000)", for: .normal)
@@ -60,7 +78,7 @@ class MainViewController: UIViewController {
             // car that user want to rent
             if let car = Car.getCar(registrationPlate: "WE 10000") {
                 // check if its possible to rent the car
-                if Rent.canRent(car: car) {
+                if Rent.canRent(user: logged, car: car) {
                     Rent.rent(user: logged, car: car)
                     let alert = UIAlertController(title: "You have rented a car", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Thank you", style: .cancel, handler: nil))
@@ -140,8 +158,9 @@ class MainViewController: UIViewController {
     }
     
     func addUsers() {
-        let _ = User(id: 1, firstName: "Bogdan", secondName: "Niemiecki", email: "b.nie@abc.pl", address: "Warszawa, Pulawska 1", phoneNumber: 600200300)
-        let _ = User(id: 2, firstName: "Tomasz", secondName: "Aleksander", email: "ta@abc.pl", address: "Warszawa, Grochowska 3", phoneNumber: 600200301)
+        let _ = Person(name: "Bogdan", surname: "Niemiecki", email: "b.nie@abc.pl", address: "Warszawa, Pulawska 1", phoneNumber: 600200300, type: .user)
+        let _ = Person(name: "Tomasz", surname: "Aleksander", email: "ta@abc.pl", address: "Warszawa, Grochowska 3", phoneNumber: 600200301, type: .user)
+        let _ = Person(name: "Pan", surname: "Swiata", email: "rarri@cars.com", address: "Italy, Mozna", phoneNumber: 612332632, type: .employee)
     }
     
     func addInsurance(to car: Car, expires: Date) {
