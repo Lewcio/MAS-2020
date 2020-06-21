@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
         let subtitle = UILabel()
         
         
-        view.backgroundColor = .red
+        view.backgroundColor = .redBackground
         title.textColor = .white
         subtitle.textColor = .white
         title.text = "Wypożyczalnia samochodów"
@@ -64,79 +64,52 @@ class MainViewController: UIViewController {
                 }
             }
         }
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func setupView() {
-        let logged = Person(name: "Michal", surname: "Lewandowski", email: "s13864@pjwstk.edu.pl", address: "Warszawa, Koszykowa 1", phoneNumber: 600100300, type: .user)
         
         let button1 = UIButton()
-        button1.setTitle("Rent car1 (WE 10000)", for: .normal)
-        button1.backgroundColor = .systemGreen
+        button1.setTitle("Login", for: .normal)
+        button1.backgroundColor = .redDark
         button1.layer.cornerRadius = 12
-        button1.rx.tap.bind { _ in
-            // car that user want to rent
-            if let car = Car.getCar(registrationPlate: "WE 10000") {
-                // check if its possible to rent the car
-                if Rent.canRent(user: logged, car: car) {
-                    Rent.rent(user: logged, car: car)
-                    let alert = UIAlertController(title: "You have rented a car", message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Thank you", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    let alert = UIAlertController(title: "Car is currently unavileable", message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
+        button1.rx.tap.bind { [weak self] _ in
+            let loginVC = LoginViewController()
+            self?.navigationController?.pushViewController(loginVC, animated: true)
         }.disposed(by: disposeBag)
         
         let button2 = UIButton()
-        button2.setTitle("Stop renting", for: .normal)
-        button2.backgroundColor = .systemGreen
+        button2.setTitle("Create account", for: .normal)
+        button2.backgroundColor = .redDark
         button2.layer.cornerRadius = 12
-        button2.rx.tap.bind { _ in
-            if let rent = Rent.currentRent(by: logged) {
-                Rent.endRent(user: logged, car: rent.car)
-                let alert = UIAlertController(title: "You have ended your rent", message: "Thank you!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                let alert = UIAlertController(title: "You have no rented car", message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }.disposed(by: disposeBag)
-        
-        let button3 = UIButton()
-        button3.setTitle("Add inurance to car (WE 10000) for 7 seconds", for: .normal)
-        button3.backgroundColor = .systemGreen
-        button3.layer.cornerRadius = 12
-        button3.rx.tap.bind { [unowned self] _ in
-            if let car = Car.getCar(registrationPlate: "WE 10000") {
-                self.addInsurance(to: car, expires: Date(timeIntervalSinceNow: 7))
-            }
+        button2.rx.tap.bind { [weak self] _ in
+            let loginVC = LoginViewController()
+            self?.navigationController?.pushViewController(loginVC, animated: true)
         }.disposed(by: disposeBag)
         
         view.addSubview(button1)
         button1.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
+            make.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
         
         view.addSubview(button2)
         button2.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
+            make.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-20)
             make.top.equalTo(button1.snp.bottom).offset(20)
-        }
-        
-        view.addSubview(button3)
-        button3.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.top.equalTo(button2.snp.bottom).offset(20)
         }
     }
     
@@ -161,6 +134,7 @@ class MainViewController: UIViewController {
         let _ = Person(name: "Bogdan", surname: "Niemiecki", email: "b.nie@abc.pl", address: "Warszawa, Pulawska 1", phoneNumber: 600200300, type: .user)
         let _ = Person(name: "Tomasz", surname: "Aleksander", email: "ta@abc.pl", address: "Warszawa, Grochowska 3", phoneNumber: 600200301, type: .user)
         let _ = Person(name: "Pan", surname: "Swiata", email: "rarri@cars.com", address: "Italy, Mozna", phoneNumber: 612332632, type: .employee)
+        let _ = Person(name: "Michal", surname: "Lewandowski", email: "s13864@pjwstk.edu.pl", address: "Warszawa, Koszykowa 1", phoneNumber: 600100300, type: .user)
     }
     
     func addInsurance(to car: Car, expires: Date) {

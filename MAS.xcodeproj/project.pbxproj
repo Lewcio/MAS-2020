@@ -15,6 +15,10 @@
 		FA5BE54F2463588A00EDB56A /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BE54E2463588A00EDB56A /* Car.swift */; };
 		FA5BE551246358BA00EDB56A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BE550246358BA00EDB56A /* User.swift */; };
 		FA6B76F52479D72E006D77F2 /* Insurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B76F42479D72E006D77F2 /* Insurance.swift */; };
+		FA998B66249EE863000D2C16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA998B65249EE863000D2C16 /* LoginViewController.swift */; };
+		FA998B68249EE87E000D2C16 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA998B67249EE87E000D2C16 /* DashboardViewController.swift */; };
+		FA998B6A249EE891000D2C16 /* RentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA998B69249EE891000D2C16 /* RentViewController.swift */; };
+		FA998B6C249EEE45000D2C16 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA998B6B249EEE45000D2C16 /* UIColor+Extension.swift */; };
 		FAA0735A246707B50062433B /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA07359246707B50062433B /* Engine.swift */; };
 		FAA0735C24671F0A0062433B /* Rent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0735B24671F0A0062433B /* Rent.swift */; };
 		FAA0C26024634BE4007A3500 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0C25F24634BE4007A3500 /* AppDelegate.swift */; };
@@ -36,6 +40,10 @@
 		FA5BE54E2463588A00EDB56A /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		FA5BE550246358BA00EDB56A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA6B76F42479D72E006D77F2 /* Insurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insurance.swift; sourceTree = "<group>"; };
+		FA998B65249EE863000D2C16 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FA998B67249EE87E000D2C16 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		FA998B69249EE891000D2C16 /* RentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentViewController.swift; sourceTree = "<group>"; };
+		FA998B6B249EEE45000D2C16 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		FAA07359246707B50062433B /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		FAA0735B24671F0A0062433B /* Rent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rent.swift; sourceTree = "<group>"; };
 		FAA0C25C24634BE4007A3500 /* MAS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +88,7 @@
 		FAA0735D246735620062433B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA998B6B249EEE45000D2C16 /* UIColor+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -117,6 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				FAA0C26324634BE4007A3500 /* MainViewController.swift */,
+				FA998B65249EE863000D2C16 /* LoginViewController.swift */,
+				FA998B67249EE87E000D2C16 /* DashboardViewController.swift */,
+				FA998B69249EE891000D2C16 /* RentViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -266,6 +278,8 @@
 				FAA0C26424634BE4007A3500 /* MainViewController.swift in Sources */,
 				FA2646D9248C56DF00C71478 /* Employee.swift in Sources */,
 				FAA0C26A24634BE4007A3500 /* MAS.xcdatamodeld in Sources */,
+				FA998B6C249EEE45000D2C16 /* UIColor+Extension.swift in Sources */,
+				FA998B66249EE863000D2C16 /* LoginViewController.swift in Sources */,
 				FA5BE551246358BA00EDB56A /* User.swift in Sources */,
 				FA5BE54F2463588A00EDB56A /* Car.swift in Sources */,
 				FA2646D7248C549A00C71478 /* Person.swift in Sources */,
@@ -277,6 +291,8 @@
 				FA6B76F52479D72E006D77F2 /* Insurance.swift in Sources */,
 				FAA0735A246707B50062433B /* Engine.swift in Sources */,
 				FA2646DB248C604B00C71478 /* EmployeeUser.swift in Sources */,
+				FA998B6A249EE891000D2C16 /* RentViewController.swift in Sources */,
+				FA998B68249EE87E000D2C16 /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

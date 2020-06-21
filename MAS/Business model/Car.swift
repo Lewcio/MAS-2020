@@ -28,7 +28,7 @@ class Car: Equatable {
 extension Car {
     
     static func getCar(registrationPlate: String) -> Car? {
-        for car in Car.extent {
+        for car in extent {
             if car.registrationPlate == registrationPlate {
                 return car
             }
@@ -36,8 +36,26 @@ extension Car {
         return nil
     }
     
+    static func getAvailableCars() -> [Car] {
+        var cars = [Car]()
+        for car in extent {
+            if !car.isRented() {
+                cars.append(car)
+            }
+        }
+        return cars
+    }
+    
+    func getCarName() -> String {
+        return "\(brand) \(model)"
+    }
+    
+    func getRegistrationPlate() -> String {
+        return registrationPlate
+    }
+    
     static func addCar(_ car: Car) {
-        Car.extent.append(car)
+        extent.append(car)
     }
     
     func isRented() -> Bool {
