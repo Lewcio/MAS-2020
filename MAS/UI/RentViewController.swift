@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import SnapKit
+import RxCocoa
+import RxSwift
 
 class RentViewController: UIViewController {
+    let disposeBag = DisposeBag()
     
     var rentedCar: Car?
     
@@ -22,6 +26,15 @@ class RentViewController: UIViewController {
         stackView.spacing = 10
         
         return stackView
+    }()
+    
+    private lazy var finishButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Finish", for: .normal)
+        button.backgroundColor = .redDark
+        button.layer.cornerRadius = 12
+        
+        return button
     }()
 
     override func viewDidLoad() {
@@ -41,11 +54,12 @@ class RentViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
+        view.addSubview(finishButton)
     }
     
     func setupConstraints() {
         scrollView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
         
         contentView.snp.makeConstraints { make in
@@ -59,10 +73,23 @@ class RentViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview().offset(-20)
         }
+        
+        finishButton.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.bottom).offset(20)
+            make.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
+        }
     }
     
     func setupRx() {
-
+        
+        finishButton.rx.tap.bind { [unowned self] _ in
+            if let logged = User.logged, let car = self.rentedCar {
+                Rent.endRent(user: logged, car: car)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }.disposed(by: disposeBag)
     }
     
     func getCarInfo() {

@@ -111,11 +111,18 @@ class DashboardViewController: UIViewController {
             
             button.rx.tap.bind { [unowned self] _ in
                 // check if car is available
-                
-                let rentVC = RentViewController()
-                rentVC.rentedCar = car
-                self.navigationController?.pushViewController(rentVC, animated: true)
-                
+                if let logged = User.logged, Rent.canRent(user: logged, car: car) {
+                    
+                    Rent.rent(user: logged, car: car)
+                    
+                    let rentVC = RentViewController()
+                    rentVC.rentedCar = car
+                    self.navigationController?.pushViewController(rentVC, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Car is currently unavileable", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }.disposed(by: disposeBag)
             
             stackView.addArrangedSubview(button)

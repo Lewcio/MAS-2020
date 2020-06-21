@@ -128,6 +128,8 @@ class MainViewController: UIViewController {
         )
         Car.addCar(car1)
         Car.addCar(car2)
+        self.addInsurance(to: car1, expires: Date(timeIntervalSinceNow: 1000))
+        self.addInsurance(to: car2, expires: Date(timeIntervalSinceNow: 1000))
     }
     
     func addUsers() {

@@ -17,6 +17,8 @@ class Person: Equatable {
     
     private static var extent = [Person]()
     
+    static var logged: Person?
+    
     var id: Int
     private static var ids: Int = 0
     

@@ -71,6 +71,9 @@ class LoginViewController: UIViewController {
         loginButton.rx.tap.bind { [unowned self] _ in
             for user in User.getPersons() {
                 if user.email == self.emailField.text {
+                    
+                    User.logged = user
+                    
                     let dashboardVC = DashboardViewController()
                     self.navigationController?.pushViewController(dashboardVC, animated: true)
                     self.navigationController?.viewControllers = [dashboardVC]
