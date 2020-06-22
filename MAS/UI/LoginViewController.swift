@@ -79,6 +79,10 @@ class LoginViewController: UIViewController {
                     self.navigationController?.viewControllers = [dashboardVC]
                 }
             }
+
+            let alert = UIAlertController(title: "Wrong e-mail", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }.disposed(by: disposeBag)
     }
 }

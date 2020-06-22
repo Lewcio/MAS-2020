@@ -31,7 +31,7 @@ class RentViewController: UIViewController {
     private lazy var finishButton: UIButton = {
         let button = UIButton()
         button.setTitle("Finish", for: .normal)
-        button.backgroundColor = .redDark
+        button.backgroundColor = .redMain
         button.layer.cornerRadius = 12
         
         return button
@@ -50,6 +50,9 @@ class RentViewController: UIViewController {
     func setupView() {
         view.backgroundColor = .white
         title = "Current rent"
+        
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -79,6 +82,7 @@ class RentViewController: UIViewController {
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-20)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
+            make.height.equalTo(50)
         }
     }
     

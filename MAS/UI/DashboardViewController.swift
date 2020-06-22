@@ -103,7 +103,14 @@ class DashboardViewController: UIViewController {
     }
     
     func getCars() {
+        
         for car in Car.getAvailableCars() {
+            
+            let annotation = MKPointAnnotation()
+            annotation.title = car.getCarName()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(car.location.latitude), longitude: CLLocationDegrees(car.location.longitude))
+            mapView.addAnnotation(annotation)
+            
             let button = UIButton()
             button.setTitle(car.getCarName(), for: .normal)
             button.backgroundColor = .blueDark
@@ -127,5 +134,21 @@ class DashboardViewController: UIViewController {
             
             stackView.addArrangedSubview(button)
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+
+        return annotationView
     }
 }

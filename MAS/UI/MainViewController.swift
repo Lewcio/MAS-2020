@@ -126,10 +126,17 @@ class MainViewController: UIViewController {
             registrationPlate: "WE 10001",
             engine: Engine.getEngine(power: 140, gearbox: .automatic)
         )
+        let car3 = Car(
+            brand: "Ford",
+            model: "Focus",
+            registrationPlate: "WB 12345",
+            engine: Engine.getEngine(power: 110, gearbox: .manual)
+        )
         Car.addCar(car1)
         Car.addCar(car2)
+        Car.addCar(car3)
         self.addInsurance(to: car1, expires: Date(timeIntervalSinceNow: 1000))
-        self.addInsurance(to: car2, expires: Date(timeIntervalSinceNow: 1000))
+        self.addInsurance(to: car3, expires: Date(timeIntervalSinceNow: 1000))
     }
     
     func addUsers() {

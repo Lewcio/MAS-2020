@@ -14,6 +14,7 @@ class Car: Equatable {
     private var registrationPlate: String
     private var engine: Engine
     private var rentedBy: Person?
+    var location: Location
     
     private static var extent = [Car]()
     
@@ -22,6 +23,13 @@ class Car: Equatable {
         self.model = model
         self.registrationPlate = registrationPlate
         self.engine = engine
+        
+        location = Car.generateLocationAtWarsaw()
+    }
+    
+    struct Location {
+        var latitude: Double
+        var longitude: Double
     }
 }
 
@@ -73,6 +81,12 @@ extension Car {
     
     func finishRent() {
         rentedBy = nil
+    }
+    
+    static func generateLocationAtWarsaw() -> Car.Location {
+        let x = Double.random(in: 52.09...52.17)
+        let y = Double.random(in: 20.56...21.10)
+        return Car.Location(latitude: x, longitude: y)
     }
     
     static func == (lhs: Car, rhs: Car) -> Bool {
